@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Result{% endblock %}
+
+{% block styling %}
+<style>
+/* Center align the heading */
+h1 {
+  text-align: center;
+}
+
+/* Set a fixed width and height for the image */
+img {
+  width: 380px;
+  height: 380px;
+}
+
+.card-body{
+  width: 40%;
+  display: inline-block;
+  float: right;
+  margin-top: 55px;
+}
+
+.card-title{
+  font-size: 30px;
+  margin: auto;
+}
+
+.card-text{
+  font-size: 22px;
+}
+
+.card-result{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card{
+  margin: 5%;
+}
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+  <h1>Result</h1>
+  <div class="card">
+    <img class="card-img-top" src="{{ user_input.image.url }}" alt="Uploaded Image">
+    <div class="card-body">
+      <h5 class="card-title">Name: {{ user_input.name }}</h5>
+      <p class="card-text">Age: {{ user_input.age }}</p>
+      <p class="card-text">Email: {{ user_input.email }}</p>
+      <p class="card-text">Image Type: {{ user_input.image_type}}</p>
+      {% if user_input.result %}
+        <p class="card-result">Prediction By Model: {{ user_input.result }}</p>
+      {% else %}
+        <p class="card-text">Unable to classify image.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
